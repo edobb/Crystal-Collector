@@ -1,0 +1,47 @@
+h1{
+	color:#fff;
+	line-height:80px;
+	background-color:brown;
+	float:left;
+	max-width:300px;
+}
+
+div#crystals{
+	/* float:left; */
+	width:300px;
+}
+
+div#crystals img{
+	float:left;
+	max-width:25%;
+}
+
+.directions{
+	clear:both;
+	padding: 20px 20px 100px;
+	max-width:500px;
+	background-color: blanchedalmond;
+	color: green;
+	line-height: 29px;
+}
+
+.dark-green{
+	/* float:left; */
+	clear: left;
+	width: 300px;
+	background-color: forestgreen;
+}
+
+#score{
+	float:left;
+}
+
+#target{
+	float:left;
+	padding:20px 40px 20px;
+	margin-right:10px;
+}
+
+#crystals{
+	clear:both;
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<h1>CrystalsCollector!</h1>
+<p class="directions">You will be given a random number at the start of the game<br>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.<br>You win the game by matching your total score to random number, you lose the game if your total goes above the random number.<br>The value of each crystal is hidden from you until you click on it<br>Each time the game starts, the values of the crystals will change</p>
+</p>
+
+<div id="scoreboard">
+	<div id="target">
+		<h2 id="target-number"></h2>
+	</div>
+	<p id="score">Start!<br>Wins <span id="win">0</span><br>Losses <span id="lose">0</span></p>
+
+</div>
+<div id="crystals">
+	<img id="crystal-1" src="assets/img/crystal1.png">
+	<img id="crystal-2" src="assets/img/crystal2.png">
+	<img id="crystal-3" src="assets/img/crystal3.png">
+	<img id="crystal-4" src="assets/img/crystal4.png">
+</div>
+<div class="dark-green">
+	<p>Your total score is:</p>
+</div>
+<div class="dark-green" id="total-score">
+<h2>0</h2>
+</div>
+
+
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+
+	var wins = 0;
+	var losses = 0;
+
+	//generate random target number between 18 - 120
+
+	//generate random numbers and assign one number to each of the four crystals from 1-12
+
+
+	var targetNumber = Math.floor(Math.random() * 113 + 17)
+	
+	$('#target-number').text(targetNumber);
+
+
+	var crystals = [ crystalOne , crystalTwo , crystalThree , crystalFour ];
+	var crystalValues = [];
+	var totalScore = 0;						
+
+	for(var i = 0; i < 4; i++){
+		crystalValues[i] = Math.floor(Math.random() * 11 + 1);
+	}
+	// for(var j = 0; j < 4; j++){
+	// 	crystalValues[i] = crystals[j];
+	// }
+
+	//onclick each crystal to add its number to the total below
+	var crystalOne = crystalValues[0];
+	var crystalTwo = crystalValues[1];
+	var crystalThree = crystalValues[2];
+	var crystalFour = crystalValues[3];
+
+//Create a function to hold the wins++ and losses++ logic to reduce code duplication
+
+function crystalClick(){
+		if(totalScore === targetNumber){
+			wins++;
+			totalScore = 0;
+			$('#win').html('<span>' + wins + '</span>');
+			targetNumber = Math.floor(Math.random() * 113 + 17);
+			$('#target-number').text(targetNumber);
+			for(var i = 0; i < 4; i++){
+				crystalValues[i] = Math.floor(Math.random() * 11 + 1);
+			}
+			// for(var j = 0; j < 4; j++){
+			// 	crystalValues[i] = crystals[j];
+			// }
+			crystalOne = crystalValues[0];
+			crystalTwo = crystalValues[1];
+			crystalThree = crystalValues[2];
+			crystalFour = crystalValues[3];
+		}
+		//if your score goes over the number above, add to losses.
+		if(totalScore > targetNumber){
+			losses++;
+			totalScore = 0;
+			$('#lose').html('<span>' + losses + '</span>');
+			targetNumber = Math.floor(Math.random() * 113 + 17);
+			$('#target-number').text(targetNumber);
+			for(var i = 0; i < 4; i++){
+				crystalValues[i] = Math.floor(Math.random() * 11 + 1);
+			}
+			// for(var j = 0; j < 4; j++){
+			// 	crystalValues[i] = crystals[j];
+			// }
+			crystalOne = crystalValues[0];
+			crystalTwo = crystalValues[1];
+			crystalThree = crystalValues[2];
+			crystalFour = crystalValues[3];
+		}
+	};
+
+	//Create ONCLICK events for each crystal image
+
+	$('#crystal-1').on('click', function(){
+		totalScore = totalScore + crystalOne;
+		crystalClick();
+		$('#total-score').html('<h2>' + totalScore + '</h2>');		
+	});
+	$('#crystal-2').on('click', function(){
+		totalScore = totalScore + crystalTwo;
+		crystalClick();
+		$('#total-score').html('<h2>' + totalScore + '</h2>');
+	});
+	$('#crystal-3').on('click', function(){
+		totalScore = totalScore + crystalThree;
+		crystalClick();
+		$('#total-score').html('<h2>' + totalScore + '</h2>');
+	});
+	$('#crystal-4').on('click', function(){
+		totalScore = totalScore + crystalFour;
+		crystalClick();
+		$('#total-score').html('<h2>' + totalScore + '</h2>');
+	});
+});
+
+</script>
+
+
+
+</body>
+</html>
