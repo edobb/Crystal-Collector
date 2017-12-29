@@ -1,5 +1,9 @@
-#Crystal Collector
-##javascript | jQuery
+# Crystal Collector
+## javascript | jQuery
+
+# GIPHY api using javascript
+
+![Crystal Collector](https://raw.githubusercontent.com/edobb/Crystal-Collector/master/ss.PNG)
 
 You will be given a random number at the start of the game
 There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.
